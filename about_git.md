@@ -20,7 +20,7 @@
   ### Создание нового ключа
    `ssh-keygen -t ed25519 -C "mymail@example.com"`
   ### ssh-agent
-   'ssh-agent' - программа для хранения и управлением SSH-ключами
+   `ssh-agent` - программа для хранения и управлением SSH-ключами
    1. `eval "$(ssh-agent -s)"` - запуск программы: *Agent pid **number***
    2. `ssh-add ~/.ssh/key_name` - добавление ключа: *Identity added*
 [^note]: ~ - это "user's home directory"
