@@ -1,11 +1,20 @@
 import RPi.GPIO as GPIO
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(24, GPIO.OUT)
-GPIO.setup([31, 20, 16, 12, 7, 8], GPIO.OUT, initial=1)
 
-p = GPIO.PWM(24, 50)
-p.start(10)
-input('Press enter to stop')
-p.stop()
+dac = [26, 19, 13, 6, 5, 11, 9, 10]
+leds = [21, 20, 16, 12, 7, 8, 25, 24]
 
-GPIO.cleanup()
+pwm = GPIO.PWM(24, 1)
+pwm.start(0)
+
+try:
+    while True:
+        new_dc = int(input('Enter Duty Cycle value: '))
+        pwm.ChangeDutyCycle(new_dc)
+        print('Voltage: ' + str(3.3 * new_dc / 100))
+
+finally:
+    GPIO.output(24, 0)
+    GPIO.cleanup()
