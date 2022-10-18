@@ -16,9 +16,8 @@ def adc_new():
     result = 0
     for i in range(len(dac) - 1, -1, -1):
         result += 2 ** i
-        #print(result)
         GPIO.output(dac, d2b(result))
-        time.sleep(0.005)
+        time.sleep(0.00005)
         if GPIO.input(comp) == 0:
             result -= 2 ** i
     return result
@@ -26,6 +25,7 @@ def adc_new():
 try:
     while True:
         digital_volt = adc_new()
+        time.sleep(0.25)
         voltage = digital_volt / 2 ** len(dac) * max_voltage
         print('Digital "voltage": {}, analog voltage: {}'.format(digital_volt, voltage))
 
