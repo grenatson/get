@@ -68,7 +68,7 @@ try:
     time_duration = end - start
     measurment_time = time_duration / len(data)
     sampling_frequency = 1 / measurment_time
-    quantization_step = max_voltage / len(leds) ** 2
+    quantization_step = max_voltage / 2 ** len(leds)
     print("Experiment duration: {}, one measurment took this long: {}".format(time_duration, measurment_time))
     print("Sampling frequency: {}, quantization step: {}".format(sampling_frequency, quantization_step))
 
@@ -78,7 +78,6 @@ try:
         file.write(str(sampling_frequency))
         file.write("\n")
         file.write(str(quantization_step))
-
 
     plt.show()
 
