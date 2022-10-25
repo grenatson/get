@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 data = np.loadtxt("data.txt")
 data_converted = data * 2 ** 8 / 3.3
